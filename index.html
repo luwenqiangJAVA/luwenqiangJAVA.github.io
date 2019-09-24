@@ -155,6 +155,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Sevlet" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Sevlet"><a href="#Sevlet" class="headerlink" title="Sevlet"></a>Sevlet</h1><p>Sevlet(init,service,destroy)<br>–&gt;GenericSevlet:实现了Sevlet中除了Service之外的所有方法<br>    –&gt;HttpSevlet:实现了其中的Service方法：doGet,doPost<br>        MyServlet:集成HttpServlet,实现了里面的方法doGet方法</p>
+<h1 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">相应消息头：</span><br><span class="line">	setContentType(&quot;text/html;charset=utf-8&quot;):设置相应的内容格式</span><br><span class="line">	setHead(String,String):设置消息头</span><br><span class="line">	addHeader(String,String)</span><br><span class="line">	setInHeader(String,Int)</span><br><span class="line">消息内容:</span><br><span class="line">	getWriter():PrintWriter 文本输出流，输出到html界面</span><br><span class="line">	getOutputStream():二进制输出流:文本，图片，movie</span><br><span class="line">			:取决于setContentType中设置的内容</span><br><span class="line">重定向：</span><br><span class="line">	sendRedirect(url)</span><br><span class="line">    	再请求转发中如果要传递数据url？key=value&amp;&amp;key2=value2</span><br></pre></td></tr></table></figure>
+
+<h1 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h1><p><strong>设置请求数据的编码：</strong></p>
+<p>​    setEncodingCharacter</p>
+<p><strong>获得请求参数内容</strong></p>
+<pre><code>getParameter(String name):String
+getParameterValues(String name):String[]</code></pre><p><strong>获得请求的服务器相关信息</strong></p>
+<pre><code>getURI()
+getHost()
+getServletName()</code></pre><p><strong>请求转发</strong><br>    RequestDispatcher rd=request.getDispatcher()<br>    rd.forward(url)</p>
+<h1 id="如何传递数据"><a href="#如何传递数据" class="headerlink" title="如何传递数据"></a>如何传递数据</h1><h2 id="把数据保存到请求中：数据的作用域只存在一次请求中"><a href="#把数据保存到请求中：数据的作用域只存在一次请求中" class="headerlink" title="把数据保存到请求中：数据的作用域只存在一次请求中"></a>把数据保存到请求中：数据的作用域只存在一次请求中</h2><pre><code>请求转发：url？key=value&amp;&amp;key2=value2
+重定向
+    request.setAttribute(String,Object)
+    request.getSttribute(String)</code></pre><h2 id="如何较长时间保存数据"><a href="#如何较长时间保存数据" class="headerlink" title="如何较长时间保存数据"></a>如何较长时间保存数据</h2><h3 id="把数据保存到客户端Cookie"><a href="#把数据保存到客户端Cookie" class="headerlink" title="把数据保存到客户端Cookie"></a>把数据保存到客户端Cookie</h3><pre><code>Cookie客户端浏览器文件夹一个小文件，数据存储的格式key=value
+使用Cookie
+怎样向客户端写入Cookie
+1）定义Cookie对象
+Cookie cookie=new Cookie（key,value)
+cookie.setAge()
+response.addCookie()
+怎样从客户端读取Cookie里面的内容
+Cookie[] cookies=request.getCookies()
+for(Cookie cookie:Cookies){
+    String name=cookie.getName()
+    if(value.equal(name))
+        cookie.getValue()
+}</code></pre><h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><pre><code>把数据放在服务器端，客户端把Sessionid放到cookie中JSESSIONID
+1）怎样创建或获得Session
+session=request.getSession(true|false)
+false:如果没有返回null
+true：如果没有一个新的session
+request.getSession()
+2）向session读写数据
+session.setAttribute(String,Object)
+session.getAttibute(String name)
+3)怎样把session id保存到客户端中
+Cookie cookie=new Cookie(&quot;JSESSIONID&quot;,session.getId())
+response.addCookie(cookie)</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/24/Sevlet/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
